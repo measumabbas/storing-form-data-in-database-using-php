@@ -10,34 +10,7 @@
 
 <body>
 
-<?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $message = $_POST['message'];
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "form";
-
-        $myconn = mysqli_connect($servername, $username, $password, $database);
-
-        $sql = "INSERT INTO `user`(`s.no`, `name`, `email`, `message`) VALUES ('','$name','$email','$message');";
-
-        $result = mysqli_query($myconn , $sql);
-
-        if($result) {
-            echo '<div class="alert alert-primary" role="alert">
-            A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-          </div>';
-        }
-
-        else{
-            echo "unable to insert data" .$mysqli_error($conn);
-        }
-    }
-    ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -77,6 +50,35 @@
         </div>
     </nav>
 
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "form";
+
+        $myconn = mysqli_connect($servername, $username, $password, $database);
+
+        $sql = "INSERT INTO `user`(`s.no`, `name`, `email`, `message`) VALUES ('','$name','$email','$message');";
+
+        $result = mysqli_query($myconn , $sql);
+
+        if($result) {
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>You Credential details have been successfully saved to the database
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+        }
+
+        else{
+            echo "unable to insert data" .$mysqli_error($conn);
+        }
+    }
+    ?>
     <div class="container my-4">
 
         <div class="row">
